@@ -5,13 +5,12 @@ import { LightsContext } from '../context/Context'
 
 export function Car1 (props) {
   const { nodes, materials } = useGLTF('/src/assets/car_feo.gltf')
-  const [Light1,setLight1] = useContext(LightsContext)
+  const [Light1,] = useContext(LightsContext)
   const [position, setPosition] = useState(9)
 
   useEffect(() => {
-    setLight1(true)
-    if( Light1) {
-      position === 9 ? setPosition(2) : setPosition(-9)
+    if( Light1 ) {
+      position === 9 ? setPosition(-9) : position === -2 ? setPosition(-9) : setPosition(9)
     } else if ( Light1 === false && position === 9) { 
       setPosition(2)
     }
@@ -75,7 +74,7 @@ export function Car2 (props) {
 }
 export function Car3 (props) {
   const { nodes, materials } = useGLTF('/src/assets/car_feo.gltf')
-  const [,, Light3] = useContext(LightsContext)
+  const [,,,,Light3] = useContext(LightsContext)
   const [position, setPosition] = useState(-9)
 
   useEffect(() => {
