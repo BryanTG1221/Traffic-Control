@@ -1,25 +1,35 @@
 
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect, useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
+import * as THREE from 'three'
 import { LightsContext } from '../context/Context'
 
 export function Car1 (props) {
   const { nodes, materials } = useGLTF('/src/assets/car_feo.gltf')
   const [Light1,] = useContext(LightsContext)
   const [position, setPosition] = useState(9)
+  const meshRef = useRef()
 
-  useEffect(() => {
-    if( Light1 ) {
-      position === 9 ? setPosition(-9) : position === -2 ? setPosition(-9) : setPosition(9)
-    } else if ( Light1 === false && position === 9) { 
-      setPosition(2)
-    }
-  }, [Light1])
+  const speed = 0.1
+  const direction = new THREE.Vector3(0,0,-1)
+
+  useFrame(() => {
+    let positionCar = meshRef.current.position.z
+    if (Light1 && positionCar <= 9 && positionCar >= -9) {
+      meshRef.current.position.add(direction.clone().multiplyScalar(speed))
+    } else if (positionCar <= -9 ) {
+      setPosition(positionCar)
+      setTimeout(() => { setPosition(9) }, 200)
+    } else if (!Light1 && positionCar > 2 ) {
+      meshRef.current.position.add(direction.clone().multiplyScalar(speed))
+    } 
+  })
 
 
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.car_body.geometry} material={materials.MAIN} scale={[0.35,0.35,0.35]} position={[0.8,0.635, position]} rotation={[0,9.4,0]}>
+      <mesh ref={meshRef} geometry={nodes.car_body.geometry} material={materials.MAIN} scale={[0.35,0.35,0.35]} position={[0.8,0.635, position]} rotation={[0,9.4,0]}>
         <mesh geometry={nodes.door_l.geometry} material={materials.MAIN} position={[0.91, 0.68, 0.64]}>
           <mesh geometry={nodes.win_door_l001.geometry} material={materials.WINDOW} position={[-0.15, 0.7, -0.73]} />
         </mesh>
