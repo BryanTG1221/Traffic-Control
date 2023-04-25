@@ -54,17 +54,27 @@ export function Car2 (props) {
   const { nodes, materials } = useGLTF('/src/assets/car_feo.gltf')
   const [,, Light2] = useContext(LightsContext)
   const [position, setPosition] = useState(-9)
+  const meshRef = useRef()
 
-  useEffect(() => {
-    if( Light2) {
-      position === -9 ? setPosition(-2) : setPosition(9)
-    } else if ( Light2 === false && position === -9) { setPosition(-2)}
-  }, [Light2])
+  const speed = 0.1
+  const direction = new THREE.Vector3(0,0,1)
+
+  useFrame(() => {
+    let positionCar = meshRef.current.position.z
+    if (Light2 && positionCar <= 9 && positionCar >= -9) {
+      meshRef.current.position.add(direction.clone().multiplyScalar(speed))
+    } else if (positionCar >= 9 ) {
+      setPosition(positionCar)
+      setTimeout(() => { setPosition(-9) }, 200)
+    } else if (!Light2 && positionCar < -2 ) {
+      meshRef.current.position.add(direction.clone().multiplyScalar(speed))
+    } 
+  })
 
 
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.car_body.geometry} material={materials.MAIN} scale={[0.35,0.35,0.35]} position={[-0.5,0.635, position]}>
+      <mesh ref={meshRef} geometry={nodes.car_body.geometry} material={materials.MAIN} scale={[0.35,0.35,0.35]} position={[-0.5,0.635, position]}>
         <mesh geometry={nodes.door_l.geometry} material={materials.MAIN} position={[0.91, 0.68, 0.64]}>
           <mesh geometry={nodes.win_door_l001.geometry} material={materials.WINDOW} position={[-0.15, 0.7, -0.73]} />
         </mesh>
@@ -86,17 +96,28 @@ export function Car3 (props) {
   const { nodes, materials } = useGLTF('/src/assets/car_feo.gltf')
   const [,,,,Light3] = useContext(LightsContext)
   const [position, setPosition] = useState(-9)
+  const meshRef = useRef()
 
-  useEffect(() => {
-    if( Light3) {
-      position === -9 ? setPosition(-2) : setPosition(9)
-    } else if ( Light3 === false && position === -9) { setPosition(-2)}
-  }, [Light3])
+  const speed = 0.1
+  const direction = new THREE.Vector3(1,0,0)
+
+  useFrame(() => {
+    let positionCar = meshRef.current.position.x
+    if (Light3 && positionCar <= 9 && positionCar >= -9) {
+      meshRef.current.position.add(direction.clone().multiplyScalar(speed))
+    } else if (positionCar >= 9 ) {
+      setPosition(positionCar)
+      setTimeout(() => { setPosition(-9) }, 200)
+    } else if (!Light3 && positionCar < -2 ) {
+      meshRef.current.position.add(direction.clone().multiplyScalar(speed))
+    } 
+  })
+
 
 
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.car_body.geometry} material={materials.MAIN} scale={[0.35,0.35,0.35]} position={[position,0.635, 0.7]} rotation={[0,7.85,0]}>
+      <mesh ref={meshRef} geometry={nodes.car_body.geometry} material={materials.MAIN} scale={[0.35,0.35,0.35]} position={[position,0.635, 0.7]} rotation={[0,7.85,0]}>
         <mesh geometry={nodes.door_l.geometry} material={materials.MAIN} position={[0.91, 0.68, 0.64]}>
           <mesh geometry={nodes.win_door_l001.geometry} material={materials.WINDOW} position={[-0.15, 0.7, -0.73]} />
         </mesh>
@@ -120,17 +141,28 @@ export function Car4 (props) {
   const { nodes, materials } = useGLTF('/src/assets/car_feo.gltf')
   const [,,,,,,Light4] = useContext(LightsContext)
   const [position, setPosition] = useState(9)
+  const meshRef = useRef()
 
-  useEffect(() => {
-    if( Light4) {
-      position === 9 ? setPosition(2.5) : setPosition(-9)
-    } else if ( position === 9) { setPosition(2.5)}
-  }, [Light4])
+  const speed = 0.1
+  const direction = new THREE.Vector3(-1,0,0)
+
+  useFrame(() => {
+    let positionCar = meshRef.current.position.x
+    if (Light4 && positionCar <= 9 && positionCar >= -9) {
+      meshRef.current.position.add(direction.clone().multiplyScalar(speed))
+    } else if (positionCar < -9 ) {
+      setPosition(positionCar)
+      setTimeout(() => { setPosition(9) }, 200)
+    } else if (!Light4 && positionCar > 3.2 ) {
+      meshRef.current.position.add(direction.clone().multiplyScalar(speed))
+    } 
+  })
+
 
 
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.car_body.geometry} material={materials.MAIN} scale={[0.35,0.35,0.35]} position={[position,0.635, -0.8]} rotation={[0,4.7,0]}>
+      <mesh ref={meshRef} geometry={nodes.car_body.geometry} material={materials.MAIN} scale={[0.35,0.35,0.35]} position={[position,0.635, -0.8]} rotation={[0,4.7,0]}>
         <mesh geometry={nodes.door_l.geometry} material={materials.MAIN} position={[0.91, 0.68, 0.64]}>
           <mesh geometry={nodes.win_door_l001.geometry} material={materials.WINDOW} position={[-0.15, 0.7, -0.73]} />
         </mesh>

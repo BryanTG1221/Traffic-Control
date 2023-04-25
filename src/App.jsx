@@ -49,9 +49,9 @@ function App () {
 
   return (
     <div id="canvas-container" style={{width: '100%', height: '100vh'}}>
-      <Canvas style={{background: '#04081C'}}>
+      <Canvas style={{background: '#C5E8FF'}}>
         <Camara />
-        <NightLight />
+        <DayLights />
         <Suspense fallback={null}>
           <Model />
           <mesh position={[1.75, 1.9,-1.6]}>
