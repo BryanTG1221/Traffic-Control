@@ -1,21 +1,29 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import { AmbarContext } from '../src/context/Ambar'
 
 export const TrafficLight = ( {activeLight} ) => {
   const [colorVerde, setColorVerde] = useState(false)
   const [colorAmarillo, setColorAmarillo] = useState(false)
   const [colorRojo, setColorRojo] = useState(false)
+  const intervaloParpadeo = useRef(null)
 
   useEffect(() => {
     if (activeLight === 'green') {
       setColorVerde(true)
       cambiarLuz()
+    } else if (activeLight === 'ambar') {
+      setColorRojo(false)
+      setColorVerde(false)
+      ambarParpadeo()
+    } else if ('stopAmbar') {
+      stopAmbar()
     } else {
+      setColorAmarillo(false)
+      setColorVerde(false)
       setColorRojo(true)
     }
-    //setInterval(cambiarLuz, 25000)
-  }, [activeLight])
+  }, [activeLight]) 
 
-  const intervaloParpadeo = useRef(null)
 
   const cambiarLuz = () => {
     setTimeout(() => {
@@ -42,30 +50,43 @@ export const TrafficLight = ( {activeLight} ) => {
     }, 23000)
   }
 
+  const ambarParpadeo = () => {
+    intervaloParpadeo.current = setInterval(() => {
+      setColorAmarillo(colorAmarillo => !colorAmarillo)
+    }, 500)
+  }
+
+  const stopAmbar = () => {
+    clearInterval(intervaloParpadeo.current)
+    setColorVerde(false)
+    setColorAmarillo(false)
+    setColorRojo(true)
+  }
+
   return (
     <>
-      <mesh>
+      <mesh rotation={[0,0,97.4]}>
         <boxGeometry args={[0.2, 0.4, 0.2]} />
         <meshStandardMaterial color={"#000"} />
         <mesh position={[0,0.1,0.1]}>
           <sphereGeometry args={[0.05, 32, 32]} />
           <meshStandardMaterial color={ colorVerde ? '#47B241' : '#414141'} position={[0, 0.6, 0]} />
           {
-            colorVerde ? <pointLight position={[0,0,0]} color={'#47B241'} intensity={0.3}/> : <pointLight position={[0,0,0]} color={'#47B241'} intensity={0}/>
+            colorVerde ? <pointLight position={[0,0,0]} color={'#47B241'} intensity={0.5}/> : <pointLight position={[0,0,0]} color={'#47B241'} intensity={0}/>
           }
         </mesh>
         <mesh position={[0,-0.02,0.1]}>
           <sphereGeometry args={[0.05, 32, 32]} />
           <meshStandardMaterial color={ colorAmarillo ? "#ff0" : '#414141'} position={[0, 0, 0]} />
           {
-            colorAmarillo ? <pointLight position={[0,0,0]} color={'#ff0'} intensity={0.3} /> : <pointLight position={[0,0,0]} color={'#47B241'} intensity={0}/>
+            colorAmarillo ? <pointLight position={[0,0,0]} color={'#ff0'} intensity={0.5} /> : <pointLight position={[0,0,0]} color={'#47B241'} intensity={0}/>
           }
         </mesh>
         <mesh position={[0,-0.13,0.1]}>
           <sphereGeometry args={[0.05, 32, 32]} />
           <meshStandardMaterial color={ colorRojo ? "#DF1C44" : '#414141'} position={[0, -0.6, 0]} />
           {
-            colorRojo ? <pointLight position={[0,0,0]} color={'#DF1C44'} intensity={0.3} /> : <pointLight position={[0,0,0]} color={'#47B241'} intensity={0}/>
+            colorRojo ? <pointLight position={[0,0,0]} color={'#DF1C44'} intensity={0.5} /> : <pointLight position={[0,0,0]} color={'#47B241'} intensity={0}/>
           }
         </mesh>
       </mesh>
