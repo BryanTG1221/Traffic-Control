@@ -8,6 +8,7 @@ import { TrafficLight } from './TrafficLight'
 import { LightsContext } from './context/Context'
 import { Car2, Car1, Car3, Car4,CarAmbar } from './assets/Car_feo'
 import { AmbarContext } from './context/Ambar'
+import { Display } from './Display'
 
 // C5E8FF DAY
 // 04081C NIght 
@@ -18,20 +19,16 @@ function App () {
   const [ambarLight, setAmbarLight] = useContext(AmbarContext)
   const [ambar, setAmbar] = useState(false)
   const [stopAmbar, setStop] = useState(false)
+  const [counterS,setCounterS] = useState(false)
   const intervaloSemaforo1 = useRef(null)
   const intervaloSemaforo2 = useRef(null)
   const intervaloSemaforo3 = useRef(null)
   const intervaloSemaforo4 = useRef(null)
 
-  console.log(Light1)
-  console.log(Light2)
-  console.log(Light3)
-  console.log(Light4)
-  console.log(ambar)
-  console.log(stopAmbar)
   
   const activateSemaforos = () => {
     setTimeout(() => {
+      setCounterS(true)
       setLight1(true)
     },200)
     intervaloSemaforo1.current = setInterval(() => {
@@ -86,7 +83,7 @@ function App () {
     setAmbarLight(false)
   }
 
-  console.log(ambarLight)
+
 
   if (!ambarLight) {
     return (
@@ -95,6 +92,7 @@ function App () {
         <button onClick={handleClickStop}>Detener</button>
         <button onClick={handleClickAmbar}>Ambar</button>
         <button onClick={handleClickStopAmbar}>Stop Ambar</button>
+        <Display activeDisplay={counterS} />
         <Canvas style={{background: '#04081C'}}>
           <Camara />
           <NightLight />

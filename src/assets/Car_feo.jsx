@@ -17,7 +17,6 @@ export function Car1 (props) {
 
   useFrame(() => {
     let positionCar = meshRef.current.position.z
-    console.log(positionCar)
     if (Light1 && positionCar <= 9 && positionCar >= -9) {
       meshRef.current.position.add(direction.clone().multiplyScalar(speed))
     } else if (positionCar <= -9 ) {
