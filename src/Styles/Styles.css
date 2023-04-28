@@ -7,3 +7,19 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.container-Buttons {
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 1;
+}
+
+.container-Buttons:hover {
+  cursor: pointer;
+}

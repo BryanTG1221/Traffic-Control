@@ -9,6 +9,9 @@ import { LightsContext } from './context/Context'
 import { Car2, Car1, Car3, Car4,CarAmbar } from './assets/Car_feo'
 import { AmbarContext } from './context/Ambar'
 import { Display } from './Display'
+import Styles from './Styles/Buttons.module.css'
+import {BsPlayFill, BsStopFill, BsFillSignStopLightsFill} from 'react-icons/bs'
+import {AiFillStop} from 'react-icons/ai'
 
 // C5E8FF DAY
 // 04081C NIght 
@@ -70,6 +73,7 @@ function App () {
 
   const handleClickStop = () => {
     stopSemaforos()
+    setCounterS(false)
   }
 
   const handleClickAmbar = () => {
@@ -81,6 +85,7 @@ function App () {
     setAmbar(false)
     setStop(true)
     setAmbarLight(false)
+    setCounterS(false)
   }
 
 
@@ -88,11 +93,13 @@ function App () {
   if (!ambarLight) {
     return (
       <div id="canvas-container" style={{width: '100%', height: '100vh'}}>
-        <button onClick={activateSemaforos}>Iniciar</button>
-        <button onClick={handleClickStop}>Detener</button>
-        <button onClick={handleClickAmbar}>Ambar</button>
-        <button onClick={handleClickStopAmbar}>Stop Ambar</button>
-        <Display activeDisplay={counterS} />
+        <div className="container-Buttons">
+          <button onClick={activateSemaforos} className={Styles['button-container']}><BsPlayFill style={{fontSize: '30px'}} /></button>
+          <button onClick={handleClickStop} className={Styles['button-container']}><BsStopFill style={{fontSize:'30px'}} /></button>
+          <button onClick={handleClickAmbar} className={Styles['button-container']}><BsFillSignStopLightsFill style={{fontSize: '30px'}} /></button>
+          <button onClick={handleClickStopAmbar} className={Styles['button-container']}><AiFillStop style={{fontSize: '30px'}} /></button>
+        </div>
+        <Display activeDisplay={counterS}/>
         <Canvas style={{background: '#04081C'}}>
           <Camara />
           <NightLight />
