@@ -7,7 +7,7 @@ import { LightsContext } from '../context/Context'
 import { AmbarContext } from '../context/Ambar'
 
 export function Car1 (props) {
-  const { nodes, materials } = useGLTF('/src/assets/car_feo.gltf')
+  const { nodes, materials } = useGLTF('/models/car_feo.gltf')
   const [Light1,] = useContext(LightsContext)
   const [position, setPosition] = useState(9)
   const meshRef = useRef()
@@ -49,10 +49,10 @@ export function Car1 (props) {
   )
 }
 
-useGLTF.preload('/car_feo.gltf')
+useGLTF.preload('/models/car_feo.gltf')
 
 export function Car2 (props) {
-  const { nodes, materials } = useGLTF('/src/assets/car_feo.gltf')
+  const { nodes, materials } = useGLTF('/models/car_feo.gltf')
   const [,, Light2] = useContext(LightsContext)
   const [position, setPosition] = useState(-9)
   const meshRef = useRef()
@@ -94,7 +94,7 @@ export function Car2 (props) {
   )
 }
 export function Car3 (props) {
-  const { nodes, materials } = useGLTF('/src/assets/car_feo.gltf')
+  const { nodes, materials } = useGLTF('/models/car_feo.gltf')
   const [,,,,Light3] = useContext(LightsContext)
   const [position, setPosition] = useState(-9)
   const meshRef = useRef()
@@ -139,7 +139,7 @@ export function Car3 (props) {
 
 
 export function Car4 (props) {
-  const { nodes, materials } = useGLTF('/src/assets/car_feo.gltf')
+  const { nodes, materials } = useGLTF('/models/car_feo.gltf')
   const [,,,,,,Light4] = useContext(LightsContext)
   const [position, setPosition] = useState(9)
   const meshRef = useRef()
@@ -182,10 +182,10 @@ export function Car4 (props) {
   )
 }
 
-useGLTF.preload('/car_feo.gltf')
+useGLTF.preload('/models/car_feo.gltf')
 
 export function CarAmbar (props) {
-  const { nodes, materials } = useGLTF('/src/assets/car_feo.gltf')
+  const { nodes, materials } = useGLTF('/models/car_feo.gltf')
   const [,,,,,,Light4] = useContext(LightsContext)
   const [position, setPosition] = useState(9)
   const meshRef = useRef()
@@ -229,5 +229,5 @@ export function CarAmbar (props) {
   )
 }
 
-useGLTF.preload('/car_feo.gltf')
+useGLTF.preload('/models/car_feo.gltf')
 

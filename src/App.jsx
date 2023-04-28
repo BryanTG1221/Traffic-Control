@@ -96,8 +96,8 @@ function App () {
         <div className="container-Buttons">
           <button onClick={activateSemaforos} className={Styles['button-container']}><BsPlayFill style={{fontSize: '30px'}} /></button>
           <button onClick={handleClickStop} className={Styles['button-container']}><BsStopFill style={{fontSize:'30px'}} /></button>
-          <button onClick={handleClickAmbar} className={Styles['button-container']}><BsFillSignStopLightsFill style={{fontSize: '30px'}} /></button>
-          <button onClick={handleClickStopAmbar} className={Styles['button-container']}><AiFillStop style={{fontSize: '30px'}} /></button>
+          <button onClick={handleClickAmbar} className={Styles['button-container-Y']}><BsFillSignStopLightsFill style={{fontSize: '30px'}} /></button>
+          <button onClick={handleClickStopAmbar} className={Styles['button-container-Y']}><AiFillStop style={{fontSize: '30px'}} /></button>
         </div>
         <Display activeDisplay={counterS}/>
         <Canvas style={{background: '#04081C'}}>
