@@ -130,10 +130,12 @@ function App () {
   } else {
     return (
       <div id="canvas-container" style={{width: '100%', height: '100vh'}}>
-        <button onClick={activateSemaforos}>Iniciar</button>
-        <button onClick={handleClickStop}>Detener</button>
-        <button onClick={handleClickAmbar}>Ambar</button>
-        <button onClick={handleClickStopAmbar}>Stop Ambar</button>
+        <div className="container-Buttons">
+          <button onClick={activateSemaforos} className={Styles['button-container']}><BsPlayFill style={{fontSize: '30px'}} /></button>
+          <button onClick={handleClickStop} className={Styles['button-container']}><BsStopFill style={{fontSize:'30px'}} /></button>
+          <button onClick={handleClickAmbar} className={Styles['button-container-Y']}><BsFillSignStopLightsFill style={{fontSize: '30px'}} /></button>
+          <button onClick={handleClickStopAmbar} className={Styles['button-container-Y']}><AiFillStop style={{fontSize: '30px'}} /></button>
+        </div>
         <Canvas style={{background: '#04081C'}}>
           <Camara />
           <NightLight />

@@ -7,7 +7,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function Model(props) {
-  const { nodes, materials } = useGLTF('/models/City.gltf')
+  const { nodes, materials } = useGLTF('/Traffic-Control/models/City.gltf')
   return (
     <group {...props} dispose={null}>
       <group position={[0.53, 0.72, -0.83]} rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
@@ -131,4 +131,4 @@ export function Model(props) {
   )
 }
 
-useGLTF.preload('/models/City.gltf')
+useGLTF.preload('/Traffic-Control/models/City.gltf')
