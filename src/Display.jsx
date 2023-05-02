@@ -1,24 +1,34 @@
 import { useState, useEffect } from "react";
 import Styles from './Styles/Display.module.css'
 
-export function Display({ activeDisplay }) {
+export function Display({ activeDisplay, type }) {
   const [currentNumber, setCurrentNumber] = useState(0);
+  const [color, setColor] = useState(false)
   const [fase, setFase] = useState(1);
   let interval
   
   useEffect(() => {
 
-    if (activeDisplay) {
+    if (activeDisplay && type === 'normal') {
       interval = setInterval(() => {
         setCurrentNumber(currentNumber => currentNumber + 1)
       }, 1000)
       return () => clearInterval(interval)
-    } else {
+    } else if ( type === 'normal') {
       clearInterval(interval)
       setCurrentNumber(0)
       setFase(1)
+    } else if (activeDisplay && type === 'ambar') {
+      interval = setInterval(() => {
+        setColor(color => !color)
+      }, 500)
+      setColor(false)
+      return () => clearInterval(interval)
+    } else if (type === 'ambar') {
+      clearInterval(interval)
+      setColor(false)
     }
-  }, [activeDisplay])
+  }, [activeDisplay, type])
 
   useEffect(() => {
     if (currentNumber > 17 && fase === 1) {
@@ -37,5 +47,5 @@ export function Display({ activeDisplay }) {
   }, [currentNumber])
 
 
-  return <div className={Styles.container}>{currentNumber}</div>;
+  return <div className={Styles.container} style={{color: color ? '#FFFF00' : '#FFFFFF'}}>{currentNumber}</div>
 }

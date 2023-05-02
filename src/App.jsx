@@ -79,6 +79,7 @@ function App () {
   const handleClickAmbar = () => {
     setAmbarLight(true)
     setAmbar(true)
+    setCounterS(true)
   }
 
   const handleClickStopAmbar = () => {
@@ -99,7 +100,7 @@ function App () {
           <button onClick={handleClickAmbar} className={Styles['button-container-Y']}><BsFillSignStopLightsFill style={{fontSize: '30px'}} /></button>
           <button onClick={handleClickStopAmbar} className={Styles['button-container-Y']}><AiFillStop style={{fontSize: '30px'}} /></button>
         </div>
-        <Display activeDisplay={counterS}/>
+        <Display activeDisplay={counterS} type='normal' />
         <Canvas style={{background: '#04081C'}}>
           <Camara />
           <NightLight />
@@ -136,6 +137,7 @@ function App () {
           <button onClick={handleClickAmbar} className={Styles['button-container-Y']}><BsFillSignStopLightsFill style={{fontSize: '30px'}} /></button>
           <button onClick={handleClickStopAmbar} className={Styles['button-container-Y']}><AiFillStop style={{fontSize: '30px'}} /></button>
         </div>
+        <Display activeDisplay={counterS} type='ambar' />
         <Canvas style={{background: '#04081C'}}>
           <Camara />
           <NightLight />
