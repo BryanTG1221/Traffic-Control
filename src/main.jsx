@@ -12,5 +12,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <App />
       </AmbarCTX>
     </TrafficLightsCTX>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

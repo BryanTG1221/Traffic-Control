@@ -3,7 +3,7 @@
   src: url(../font/DS-DIGII.TTF) format('truetype');
 }
 .container {
-  font-size: 55px;
+  font-size: 85px;
   position: absolute;
   color: white;
   top: 15px;
