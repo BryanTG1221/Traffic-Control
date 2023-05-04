@@ -30,6 +30,10 @@ export const TrafficLight = ({ activeLight }) => {
     }, 0)
 
     setTimeout(() => {
+      setColorVerde(false)
+    }, 16500)
+
+    setTimeout(() => {
       intervaloParpadeo.current = setInterval(() => {
         setColorVerde(colorVerde => !colorVerde)
       }, 500)
@@ -40,6 +44,10 @@ export const TrafficLight = ({ activeLight }) => {
       setColorVerde(false)
       setColorAmarillo(true)
     }, 20000)
+
+    setTimeout(() => {
+      setColorAmarillo(false)
+    }, 22500)
 
     setTimeout(() => {
       setColorVerde(false)

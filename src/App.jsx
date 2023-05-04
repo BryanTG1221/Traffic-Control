@@ -45,6 +45,7 @@ function App () {
       setLight3(false)
       setLight4(false)
     }, 50000)
+    /*
     intervaloSemaforo3.current = setInterval(() => {
       setLight1(false)
       setLight2(false)
@@ -57,6 +58,7 @@ function App () {
       setLight3(false)
       setLight4(false)
     }, 100000)
+    */
   }
 
   const stopSemaforos = () => {
@@ -98,7 +100,7 @@ function App () {
           <button onClick={handleClickStopAmbar} className={Styles['button-container-Y']}><AiFillStop style={{ fontSize: '30px' }} /></button>
         </div>
         <Display activeDisplay={counterS} type='normal' />
-        <Canvas style={{ background: '#04081C' }} dpr={0.7} shadows={false}>
+        <Canvas style={{ background: '#04081C' }} dpr={0.6} shadows={false}>
           <Camara />
           <NightLight />
           <Suspense fallback={null}>
@@ -135,7 +137,7 @@ function App () {
           <button onClick={handleClickStopAmbar} className={Styles['button-container-Y']}><AiFillStop style={{ fontSize: '30px' }} /></button>
         </div>
         <Display activeDisplay={counterS} type='ambar' />
-        <Canvas style={{ background: '#04081C' }} dpr={0.7} shadows={false}>
+        <Canvas style={{ background: '#04081C' }} dpr={0.6} shadows={false}>
           <Camara />
           <NightLight />
           <Suspense fallback={null}>

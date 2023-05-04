@@ -3,7 +3,7 @@ import Styles from './Styles/Display.module.css'
 
 export function Display ({ activeDisplay, type }) {
   const [currentNumber, setCurrentNumber] = useState(1)
-  const [colorDisplay, setColor] = useState('#DF1C44')
+  const [colorDisplay, setColor] = useState('#2e2e2e')
   const [fase, setFase] = useState(1)
   let interval
 
