@@ -19,7 +19,7 @@ export const TrafficLight = ({ activeLight }) => {
     } else {
       setColorAmarillo(false)
       setColorVerde(false)
-      setColorRojo(true)
+      setColorRojo(false)
     }
   }, [activeLight])
 

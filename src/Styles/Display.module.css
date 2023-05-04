@@ -3,11 +3,12 @@
   src: url(../font/DS-DIGII.TTF) format('truetype');
 }
 .container {
-  font-size: 85px;
+  background-color: black;
+  font-size: 125px;
   position: absolute;
   color: white;
-  top: 15px;
-  right: 25px;
+  top: 50%;
+  right: 50%;
   z-index: 1;
   font-family: 'DS-Digital';
 }
