@@ -100,7 +100,7 @@ function App () {
           <button onClick={handleClickStopAmbar} className={Styles['button-container-Y']}><AiFillStop style={{ fontSize: '30px' }} /></button>
         </div>
         <Display activeDisplay={counterS} type='normal' />
-        <Canvas style={{ background: '#04081C' }} dpr={0.6} shadows={false}>
+        <Canvas style={{ background: '#04081C' }} dpr={0.5} shadows={false}>
           <Camara />
           <NightLight />
           <Suspense fallback={null}>
@@ -137,7 +137,7 @@ function App () {
           <button onClick={handleClickStopAmbar} className={Styles['button-container-Y']}><AiFillStop style={{ fontSize: '30px' }} /></button>
         </div>
         <Display activeDisplay={counterS} type='ambar' />
-        <Canvas style={{ background: '#04081C' }} dpr={0.6} shadows={false}>
+        <Canvas style={{ background: '#04081C' }} dpr={0.5} shadows={false}>
           <Camara />
           <NightLight />
           <Suspense fallback={null}>

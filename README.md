@@ -1,15 +1,9 @@
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/roshanlam/ReadMeTemplate/">
-    <img src="./logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/ZTStudios">
+    <img src="https://avatars.githubusercontent.com/u/100622460?s=200&v=4" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Traffic Control</h3>
@@ -22,8 +16,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## Sobre el proyecto
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<p align="center">
+  <img src="./src/assets/Preview.png" alt="preview">
+</p>
 
 En este proyecto, se desarrolló una aplicación web 3D utilizando React y Three.js que consiste en un crucero de carros y semáforos. La aplicación incluye una vista 3D del crucero con vehículos en movimiento y semáforos que regulan el tráfico.
 
